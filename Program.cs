@@ -1,15 +1,33 @@
-﻿using System;
+using System;
 
 namespace csharp_tutorial {
-    class games 
+    class wizard 
     {
         public string name;
-        public int yearReleased;
+        public string activespell;
+        public int totalSpells;
+        public float exp;
 
-        public void print()
+        public void callevent()
         {
-            Console.WriteLine(name + " is a great game");
-            Console.WriteLine("it was released in the year " + yearReleased);
+            if (totalSpells > 0)
+            {
+                 Console.WriteLine(name + " used the spell " + activespell);
+                 totalSpells--;
+                 exp += 0.5f;
+            }
+            else 
+            {
+                Console.WriteLine("all spells have been used");
+            }
+           
+            
+        }
+         
+        public void rest()
+        {
+            Console.WriteLine(name + " rested to regain spells");
+            totalSpells = 3;
         }
     }
 
@@ -22,11 +40,22 @@ namespace csharp_tutorial {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
 
-            games game01 = new games();
-            game01.name = "breath of the wild";
-            game01.yearReleased = 2017;
+            wizard wizard01 = new wizard();
+            wizard01.name = "gandalf";
+            wizard01.activespell = "fire";
+            wizard01.totalSpells = 3;
+            wizard01.exp = 0f;
 
-            game01.print();
+            wizard01.callevent();
+            wizard01.callevent();
+            wizard01.callevent();
+            wizard01.callevent();
+
+            wizard01.rest();
+            wizard01.callevent();
+            wizard01.callevent();
+            
+            Console.WriteLine(wizard01.name + " gained " + wizard01.exp + " exp");
             Console.ReadKey();
             
 
