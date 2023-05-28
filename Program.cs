@@ -1,14 +1,25 @@
 using System;
 
 namespace csharp_tutorial {
-    class wizard 
+    class Wizard 
     {
         public string name;
         public string activespell;
         public int totalSpells;
         public float exp;
 
-        public void callevent()
+        static public int Count;
+
+        public Wizard(string _name, string _activespell)
+        {
+            name = _name;
+            activespell = _activespell;
+            totalSpells = 3;
+            exp = 0f;
+            Count++;
+        }
+
+        public void attack()
         {
             if (totalSpells > 0)
             {
@@ -40,22 +51,17 @@ namespace csharp_tutorial {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
 
-            wizard wizard01 = new wizard();
-            wizard01.name = "gandalf";
-            wizard01.activespell = "fire";
-            wizard01.totalSpells = 3;
-            wizard01.exp = 0f;
+            Wizard wizard01 = new Wizard("gandalf", "thunder");
+            Wizard wizard02 = new Wizard("impoter", "sus");
 
-            wizard01.callevent();
-            wizard01.callevent();
-            wizard01.callevent();
-            wizard01.callevent();
-
-            wizard01.rest();
-            wizard01.callevent();
-            wizard01.callevent();
+            wizard01.attack();
+            wizard02.attack();
+            
             
             Console.WriteLine(wizard01.name + " gained " + wizard01.exp + " exp");
+            Console.WriteLine(wizard02.name + " gained " + wizard02.exp + " exp");
+
+            Console.WriteLine(Wizard.Count);
             Console.ReadKey();
             
 
